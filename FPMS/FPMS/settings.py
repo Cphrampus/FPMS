@@ -17,12 +17,11 @@ from configparser import RawConfigParser
 # Using a basic .ini file will suffice. Either generate your own or ask one of the devs for a settings that you can use. 
 # Note: If you are using python 2, the module you will want to import is called ConfigParser. 
 # Reference: https://code.djangoproject.com/wiki/SplitSettings
-
 config = RawConfigParser()
 config.read(os.path.join(os.path.abspath(os.path.dirname(__file__))) + "\settings.ini")
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
