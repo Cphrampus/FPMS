@@ -11,16 +11,23 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
 import os
+from configparser import RawConfigParser
+
+# We use a config file parser in order to parse secrets. 
+# Using a basic .ini file will suffice. Either generate your own or ask one of the devs for a settings that you can use. 
+# Note: If you are using python 2, the module you will want to import is called ConfigParser. 
+# Reference: https://code.djangoproject.com/wiki/SplitSettings
+config = RawConfigParser()
+config.read(os.path.join(os.path.abspath(os.path.dirname(__file__))) + "\settings.ini")
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 't+^flxg&v596q&3n_c(#kz5&k9*symytm!-qzd9#-o85s99yrz'
+SECRET_KEY = config.get('keys', 'SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
